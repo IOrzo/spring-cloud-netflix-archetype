@@ -13,3 +13,5 @@ out/
 logs
 */application-local.yml
 application-local.yml
+
+LOG_FILE_IS_UNDEFINED
