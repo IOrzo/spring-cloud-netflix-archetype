@@ -17,13 +17,14 @@ zuul:
     connect-timeout-millis: 30000
     socket-timeout-millis: 60000
   routes:
-    moden-base:
+    archetype-base:
       path: /base/**
-      serviceId: moden-base
-      stripPrefix: true
+      serviceId: archetype-base
+      # 会去除掉 path 前缀
+      stripPrefix: false
       sensitiveHeaders: Cookie,Set-Cookie
-    moden-app-service:
+    archetype-app:
       path: /app/**
-      serviceId: moden-app-service
-      stripPrefix: true
+      serviceId: archetype-app
+      stripPrefix: false
       sensitiveHeaders: Cookie,Set-Cookie
