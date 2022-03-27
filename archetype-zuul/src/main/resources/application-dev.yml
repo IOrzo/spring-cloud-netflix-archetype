@@ -1,0 +1,29 @@
+server:
+  port: 16000
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    #开启健康检查
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
+
+#代理服务子模块
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 30000
+    socket-timeout-millis: 60000
+  routes:
+    moden-base:
+      path: /base/**
+      serviceId: moden-base
+      stripPrefix: true
+      sensitiveHeaders: Cookie,Set-Cookie
+    moden-app-service:
+      path: /app/**
+      serviceId: moden-app-service
+      stripPrefix: true
+      sensitiveHeaders: Cookie,Set-Cookie

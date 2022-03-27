@@ -1,0 +1,34 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    #租期到期时间（默认90秒）
+    lease-expiration-duration-in-seconds: 90
+    #租期更新时间间隔（默认30秒）
+    lease-renewal-interval-in-seconds: 30
+    # 保证 Eureka Server 相互注册时使用 IP 地址
+    prefer-ip-address: true
+    hostname: 127.0.0.1
+  client:
+    #开启健康检查
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://admin:admin@${eureka.instance.hostname}:${server.port}/eureka/
+    register-with-eureka: false
+    fetch-registry: false
+  # 测试服务器中关闭自我保护机制，确保服务下线后能够及时发现
+  server:
+    # 自我保护机制
+    # 自我保护模式正是一种针对网络异常波动的安全保护措施，使用自我保护模式能使 Eureka 集群更加的健壮、稳定的运行。
+    # 自我保护机制的工作机制是：如果在15分钟内超过85%的客户端节点都没有正常的心跳，那么Eureka就认为客户端与注册中心出现了网络故障，
+    # Eureka Server 自动进入自我保护机制，此时会出现以下几种情况：
+    # 1. Eureka Server 不再从注册列表中移除因为长时间没收到心跳而应该过期的服务。
+    # 2. Eureka Server 仍然能够接受新服务的注册和查询请求，但是不会被同步到其它节点上，保证当前节点依然可用。
+    # 3. 当网络稳定时，当前Eureka Server新的注册信息会被同步到其它节点中。
+    enable-self-preservation: false
+    # 自我保护机制关闭时，检查失效服务的时间
+    eviction-interval-timer-in-ms: 60000
+spring:
+  application:
+    name: moden-eureka
