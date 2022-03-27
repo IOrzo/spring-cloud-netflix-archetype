@@ -1,0 +1,15 @@
+# for eclipse
+/.settings/
+/.project
+
+# for idea
+*.iml
+/.idea
+*.*/target
+.DS_Store
+.gitattributes
+*.zip
+out/
+logs
+*/application-local.yml
+application-local.yml

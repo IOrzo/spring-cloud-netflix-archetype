@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: archetype-zuul
+logging:
+  file: logs/${spring.application.name}.log
