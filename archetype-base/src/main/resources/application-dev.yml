@@ -2,9 +2,18 @@ server:
   port: 16001
   servlet:
     context-path: /base
-spring:
-  application:
-    name: archetype-base
+
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    # 开启健康检查
+    # 需要添加 spring-boot-starter-actuator 依赖，并且该配置不会提示
+#    healthcheck:
+#      enabled: true
+    serviceUrl:
+      defaultZone: http://admin:admin@${eureka.instance.hostname}:8761/eureka/
 
 # apollo 配置
 app:
