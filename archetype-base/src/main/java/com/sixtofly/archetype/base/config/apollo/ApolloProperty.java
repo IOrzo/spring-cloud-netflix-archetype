@@ -1,4 +1,4 @@
-package com.sixtofly.archetype.base.config;
+package com.sixtofly.archetype.base.config.apollo;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
