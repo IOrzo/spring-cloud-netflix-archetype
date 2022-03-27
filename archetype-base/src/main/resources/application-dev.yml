@@ -1,0 +1,25 @@
+server:
+  port: 16001
+  servlet:
+    context-path: /base
+spring:
+  application:
+    name: archetype-base
+
+# apollo 配置
+app:
+  id: 16001
+apollo:
+  # 指定配置中心地址
+  meta: http://127.0.0.1:8080
+  bootstrap:
+    enabled: true
+    # 如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，
+    # 那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前
+    eagerLoad:
+      enabled: false
+  # Spring应用通常会使用Placeholder来注入配置，使用的格式形如${someKey:someDefaultValue}，如${timeout:100}
+  # 如果需要关闭 placeholder 在运行时自动更新功能
+  autoUpdateInjectedSpringProperties: true
+
+#    namespaces:

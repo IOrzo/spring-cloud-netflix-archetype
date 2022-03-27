@@ -19,6 +19,7 @@
 	<modules>
 		<module>archetype-eureka</module>
 		<module>archetype-zuul</module>
+		<module>archetype-base</module>
 	</modules>
 
 	<properties>
